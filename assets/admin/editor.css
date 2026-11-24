@@ -1,0 +1,167 @@
+/* CZ Sutra Studio — amministrazione */
+.czss-muted { color: #646970; }
+.czss-spacer { flex: 1 1 auto; }
+
+/* Titoli sotto il titolo principale */
+.czss-titles {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 12px 16px;
+  margin: 14px 0 6px;
+}
+@media (max-width: 782px) { .czss-titles { grid-template-columns: 1fr; } }
+.czss-desc-heading { margin: 22px 0 6px !important; padding: 0 !important; font-size: 14px !important; }
+.czss-desc-heading small { font-weight: 400; color: #646970; }
+
+.czss-field { display: flex; flex-direction: column; gap: 4px; }
+.czss-field__label { font-weight: 600; font-size: 12px; color: #1d2327; }
+.czss-field__label small { font-weight: 400; color: #646970; }
+.czss-input { width: 100%; padding: 6px 10px; font-size: 14px; line-height: 1.55; border-radius: 6px; }
+.czss-input--cjk { font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif; font-size: 17px; letter-spacing: .04em; }
+.czss-titles .czss-input { padding: 8px 12px; font-size: 16px; }
+.czss-titles .czss-input--cjk { font-size: 20px; }
+.czss-input.is-invalid { border-color: #d63638; box-shadow: 0 0 0 1px #d63638; }
+.czss-select { min-height: 30px; }
+
+/* Metabox */
+#czss-studio .inside { margin: 0; padding: 0; }
+.czss-editor { --czss-wave: #50575e; }
+.czss-loading { padding: 16px; }
+
+.czss-btn {
+  display: inline-flex; align-items: center; gap: 3px;
+  min-height: 30px; padding: 0 10px; border-radius: 6px;
+  border: 1px solid #c3c4c7; background: #fff; color: #1d2327;
+  font-size: 13px; cursor: pointer; white-space: nowrap;
+}
+.czss-btn:hover:not(:disabled) { border-color: #2271b1; color: #2271b1; }
+.czss-btn:disabled { opacity: .45; cursor: default; }
+.czss-btn .dashicons { font-size: 16px; width: 16px; height: 16px; }
+.czss-btn--ghost { background: transparent; }
+.czss-btn--icon { padding: 0; width: 30px; justify-content: center; }
+.czss-btn--danger:hover:not(:disabled) { border-color: #d63638; color: #d63638; }
+.czss-btn--play {
+  width: 40px; height: 40px; padding: 0; justify-content: center; border-radius: 50%;
+  background: #2271b1; border-color: #2271b1; color: #fff;
+}
+.czss-btn--play::before { content: ""; border-style: solid; border-width: 7px 0 7px 12px; border-color: transparent transparent transparent currentColor; margin-left: 3px; }
+.czss-btn--play.is-playing::before { border-width: 0 4px; border-color: currentColor; height: 14px; width: 4px; margin: 0; border-style: solid; }
+.czss-btn--play:hover:not(:disabled) { background: #135e96; color: #fff; }
+
+/* Audio */
+.czss-audio { padding: 14px 16px 12px; border-bottom: 1px solid #dcdcde; background: #f6f7f7; }
+.czss-audio__empty { display: flex; align-items: center; gap: 16px; padding: 10px 0; }
+.czss-audio__empty .dashicons { font-size: 34px; width: 34px; height: 34px; color: #8c8f94; }
+.czss-audio__empty p { margin: 2px 0 0; color: #646970; max-width: 60ch; }
+.czss-audio__empty > div { flex: 1; }
+.czss-audio__head { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.czss-audio__meta { font-weight: 600; }
+
+.czss-wave { position: relative; background: #fff; border: 1px solid #dcdcde; border-radius: 8px; overflow: hidden; }
+.czss-wave.is-loading::after {
+  content: "Analisi dell’audio…"; position: absolute; inset: auto 10px 8px auto; font-size: 11px; color: #646970;
+}
+.czss-wave__scroll { overflow-x: auto; overflow-y: hidden; }
+.czss-wave__inner { position: relative; width: max-content; }
+.czss-wave__canvas { display: block; cursor: pointer; }
+.czss-wave__playhead {
+  position: absolute; top: 0; bottom: 0; left: 0; width: 2px; margin-left: -1px;
+  background: #d63638; pointer-events: none; will-change: transform;
+}
+
+.czss-transport { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 10px; }
+.czss-time { font-variant-numeric: tabular-nums; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; min-width: 120px; margin: 0 6px; }
+.czss-zoom { display: inline-flex; align-items: center; gap: 6px; color: #646970; }
+
+.czss-tap { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 12px; padding-top: 12px; border-top: 1px dashed #dcdcde; }
+.czss-tap.is-active { background: #fcf0f1; border: 1px solid #f0b8bb; border-radius: 8px; padding: 10px 12px; }
+.czss-tap__mark {
+  min-width: 120px; min-height: 48px; border-radius: 10px; border: 0; cursor: pointer;
+  background: #d63638; color: #fff; font-size: 16px; font-weight: 600;
+  box-shadow: 0 2px 0 #8a2424; user-select: none;
+}
+.czss-tap__mark:active { transform: translateY(2px); box-shadow: none; }
+.czss-tap__mark kbd { background: rgba(255,255,255,.2); color: #fff; border-radius: 4px; padding: 1px 6px; margin-left: 4px; font-size: 12px; }
+.czss-tap__info { display: flex; flex-direction: column; gap: 2px; }
+.czss-tap__lead { display: inline-flex; align-items: center; gap: 6px; color: #50575e; }
+.czss-vbr { margin: 0 0 10px !important; }
+
+/* Schede */
+.czss-cards { padding: 14px 16px 18px; }
+.czss-cards__toolbar { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.czss-cards__title { margin: 0; font-size: 14px; }
+.czss-count { display: inline-block; min-width: 20px; padding: 0 6px; border-radius: 10px; background: #dcdcde; text-align: center; font-size: 12px; }
+.czss-empty { padding: 24px; text-align: center; color: #646970; border: 1px dashed #c3c4c7; border-radius: 8px; }
+.czss-add { margin-top: 12px !important; }
+
+.czss-cards__list { display: flex; flex-direction: column; gap: 8px; }
+.czss-card { border: 1px solid #dcdcde; border-radius: 8px; background: #fff; transition: border-color .15s, box-shadow .15s; }
+.czss-card.is-selected { border-color: #2271b1; box-shadow: 0 0 0 1px #2271b1; }
+.czss-card.is-playing { box-shadow: 0 0 0 2px #d63638; border-color: #d63638; }
+.czss-card-placeholder { border: 2px dashed #2271b1; border-radius: 8px; background: #f0f6fc; }
+
+.czss-card__head { display: flex; align-items: center; gap: 8px; padding: 6px 8px; min-height: 44px; }
+.czss-card__handle { cursor: grab; color: #a7aaad; }
+.czss-card__num {
+  flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center;
+  background: #f0f0f1; font-weight: 600; font-size: 12px;
+}
+.czss-card.is-selected .czss-card__num { background: #2271b1; color: #fff; }
+.czss-card__toggle {
+  flex: 1 1 auto; min-width: 0; display: flex; gap: 12px; align-items: baseline;
+  border: 0; background: none; padding: 6px 4px; text-align: left; cursor: pointer; color: inherit;
+}
+.czss-card__preview { display: flex; gap: 12px; min-width: 0; align-items: baseline; }
+.czss-card__preview-jp { font-family: "Noto Serif JP", serif; font-size: 15px; white-space: nowrap; }
+.czss-card__preview-ro { color: #646970; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.czss-card__range {
+  flex: 0 0 auto; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px;
+  padding: 2px 8px; border-radius: 10px; background: #f0f6fc; color: #135e96;
+}
+.czss-card__range.is-missing { background: #fcf9e8; color: #8a6d00; }
+.czss-card__actions { display: flex; gap: 2px; }
+.czss-card__warn { color: #dba617; flex: 0 0 auto; }
+.czss-card__warn[hidden] { display: none; }
+.czss-align { margin: 10px 0 0; padding: 6px 10px; border-radius: 6px; font-size: 12px; line-height: 1.5; }
+.czss-align--ok { background: #edfaef; color: #00450c; }
+.czss-align--warn { background: #fcf9e8; color: #6e5300; }
+.czss-align--none { display: none; }
+
+.czss-card__body { display: none; padding: 4px 12px 14px 48px; }
+.czss-card.is-open .czss-card__body { display: block; }
+.czss-card__fields textarea { field-sizing: content; min-height: 6.5em; max-height: 24em; resize: vertical; }
+.czss-card__fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 16px; }
+.czss-card__times { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; margin-top: 12px; padding-top: 12px; border-top: 1px solid #f0f0f1; }
+.czss-timefield { display: inline-flex; align-items: center; gap: 4px; }
+.czss-timefield__label { font-weight: 600; font-size: 12px; margin-right: 2px; }
+.czss-input--time { width: 92px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; text-align: center; }
+.czss-card__hint { font-size: 12px; }
+
+@media (max-width: 960px) {
+  .czss-card__fields { grid-template-columns: 1fr; }
+  .czss-card__body { padding-left: 12px; }
+  .czss-card__preview-ro { display: none; }
+}
+@media (max-width: 600px) {
+  .czss-card__actions .czss-btn:not(:first-child):not(:last-child) { display: none; }
+  .czss-card__range { display: none; }
+}
+
+/* Dialog importa */
+.czss-dialog { width: min(720px, 92vw); border: 0; border-radius: 12px; padding: 20px 24px; box-shadow: 0 20px 60px rgba(0,0,0,.3); }
+.czss-dialog::backdrop { background: rgba(0,0,0,.45); }
+.czss-dialog h2 { margin-top: 0; }
+.czss-dialog__row { display: flex; flex-wrap: wrap; gap: 12px 20px; margin: 10px 0; }
+.czss-dialog__actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 12px; }
+
+/* Elenco */
+.column-czss_cards, .column-czss_audio, .column-czss_order { width: 110px; }
+.column-czss_original { font-family: "Noto Serif JP", serif; font-size: 15px; }
+
+/* Pulsanti con icona: icona e testo centrati sulla stessa linea */
+.czss-tap .button,
+.czss-cards__toolbar .button,
+.czss-add { display: inline-flex !important; align-items: center; gap: 5px; }
+.czss-tap .button .dashicons,
+.czss-cards__toolbar .button .dashicons,
+.czss-add .dashicons { width: 16px; height: 16px; font-size: 16px; line-height: 1; vertical-align: middle; }
